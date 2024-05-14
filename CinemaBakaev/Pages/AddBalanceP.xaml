@@ -1,0 +1,67 @@
+﻿<Page x:Class="CinemaBakaev.Pages.AddBalanceP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaBakaev.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddBalanceP">
+
+    <Grid>
+        <Border BorderBrush="#FF92C9CA" Height="450" Width="300" BorderThickness="1,0,1,0">
+            <StackPanel Height="450" Width="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="250"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Image  Source="/Source/LogoTitle.png" />
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+
+                        <Grid>
+                            <TextBox x:Name="SumTB" Style="{StaticResource TBStyleAutorize}"  VerticalAlignment="Bottom" Margin="20,0,20,185"></TextBox>
+                            <TextBlock IsHitTestVisible="False" Text="Введите сумму пополнения" Foreground="#FF120325" FontSize="16" VerticalAlignment="Bottom" Margin="32,0,30,193">
+                                <TextBlock.Style>
+                                    <Style TargetType="{x:Type TextBlock}">
+                                        <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ElementName=SumTB, Path=Text}" Value="">
+                                                <Setter Property="Visibility" Value="Visible"></Setter>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
+                            <Button x:Name="BackBT" Margin="20,0,20,50" Content="Назад"  VerticalAlignment="Bottom" Style="{StaticResource BTStyleLogin}" Click="BackBT_Click" ></Button>
+                            <Button x:Name="AddBalanceBT" Margin="20,0,20,10" Content="Пополнить"  VerticalAlignment="Bottom" Style="{StaticResource BTStyleLogin}" Click="AddBalanceBT_Click"></Button>
+                        </Grid>
+                    </Grid>
+
+
+
+
+                    <Grid Grid.Row="2">
+                        <Polygon HorizontalAlignment="Center" VerticalAlignment="Top" Stroke="#FFC4E0BD" Points="0,0,330,0" Margin="20,0"></Polygon>
+                        <Button Name="TgBT" Style="{StaticResource BTStyleAutorize}" Margin="10,0,155,0" Click="TgBT_Click">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image  VerticalAlignment="Center" Source="\Source\TG.png" Width="20" Height="20"></Image>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10,0,0,0" Text="Телеграмм"  Foreground="White" FontSize="14"/>
+                            </StackPanel>
+                        </Button>
+                        <Button Name="VKBT" Style="{StaticResource BTStyleAutorize}" Margin="155,0,10,0" Click="VKBT_Click">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Image  VerticalAlignment="Center" Source="\Source\Vk.png" Width="20" Height="20"></Image>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Padding="10,0,0,0" Text="ВКонтакте"  Foreground="White" FontSize="14"/>
+                            </StackPanel>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>

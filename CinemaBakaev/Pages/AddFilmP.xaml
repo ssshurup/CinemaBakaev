@@ -1,0 +1,61 @@
+﻿<Page x:Class="CinemaBakaev.Pages.AddFilmP"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CinemaBakaev.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddFilmP">
+
+    <Grid>
+        <Grid Height="300" Width="250" HorizontalAlignment="Right">
+                <TextBlock Text="Описание:" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White"/>
+                <TextBox Text="{Binding description}"  TextWrapping="Wrap" Height="260"></TextBox>
+            
+        </Grid>
+        <Border BorderBrush="White" Height="450" Width="300" BorderThickness="1,0,1,0">
+            <StackPanel Height="450" Width="300">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="350"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Image  Source="/Source/LogoTitle.png" />
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <StackPanel>
+                            <StackPanel>
+                                <Grid>
+                                    <TextBox x:Name="TitleTB" Style="{StaticResource TBStyle}" Text="{Binding title}" VerticalAlignment="Bottom" Margin="5"></TextBox>
+                                    <TextBlock IsHitTestVisible="False" Text="Название фильма" Foreground="#FF120325" FontSize="16" Margin="12" >
+                                        <TextBlock.Style>
+                                            <Style TargetType="{x:Type TextBlock}">
+                                                <Setter Property="Visibility" Value="Collapsed"></Setter>
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding ElementName=TitleTB, Path=Text}" Value="">
+                                                        <Setter Property="Visibility" Value="Visible"></Setter>
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
+
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel>
+                                <ComboBox Name="GenreCB" Template="{DynamicResource CBStyles}" DisplayMemberPath="name" Height="35" Margin="5"/>
+                                <ComboBox Name="CountryCB" Template="{DynamicResource CBStyles}" DisplayMemberPath="name" Height="35" Margin="5"/>
+                                <ComboBox Name="DirectorCB" Template="{DynamicResource CBStyles}" DisplayMemberPath="name" Height="35" Margin="5"/>
+                                <DatePicker Name="ReleaseDP"/>
+                                <Button x:Name="AddBT" Content="Добавить" VerticalAlignment="Top"  Margin="5" Style="{StaticResource BTStyle}" Click="AddBT_Click"/>
+                                <Button x:Name="BackBT" Content="Назад" VerticalAlignment="Top"  Margin="5" Style="{StaticResource BTStyle}" Click="BackBT_Click"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Page>
